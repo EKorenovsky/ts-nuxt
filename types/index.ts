@@ -1,5 +1,11 @@
 export * from './state';
 
+
+export interface Link {
+  href: string;
+  text: string;
+}
+
 export interface Person {
   id: number;
   first_name: string;

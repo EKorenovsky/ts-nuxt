@@ -1,3 +1,4 @@
+import colors from "vuetify/lib/util/colors";
 export default {
   env: {},
   head: {
@@ -12,11 +13,32 @@ export default {
     ]
   },
   loading: { color: "#3B8070" },
-  css: ["~/assets/css/main.css"],
-  build: {},
+  css: [
+    '@/assets/sass/overrides.sass'
+  ],
+  build: {
+    cssSourceMap: true,
+    extractCSS: true,
+  },
   buildModules: ["@nuxt/typescript-build","@nuxtjs/vuetify"],
+  vuetify: {
+    customVariables: ['@/assets/sass/variables.scss'],
+    frameworkOptions: "@/utils/vuetify.options.ts",
+  },
   modules: [
     "@nuxtjs/axios",
+    ['nuxt-i18n', {
+      locales: [
+        {
+          name: 'English',
+          code: 'en',
+          iso: 'en-US',
+          file: 'en-US.ts'
+        },
+      ],
+      langDir: 'lang/',
+      defaultLocale: 'en',
+    }]
   ],
   axios: {}
 }
